@@ -1,66 +1,338 @@
+
+
+
+
+
+GarvitaCV25OG.pdf
+PDF
+create a portfolio using advance animation and hightlight the important points
+
+I reviewed the resume you uploaded. It shows strong data analytics + programming skills, multiple projects, and certifications 
+GarvitaCV25OG
+
+. A good portfolio should highlight those clearly and use motion to guide attention to your strengths.
+
+Below is a modern animated portfolio template using:
+
+HTML + CSS + JavaScript
+
+GSAP animations
+
+Scroll reveal effects
+
+Hover animations
+
+Glassmorphism UI
+
+Project highlight cards
+
+This is a single file portfolio you can deploy easily on GitHub Pages.
+
+Advanced Animated Portfolio (Full Code)
+Save this as index.html
+
+
+
+How to Deploy This Portfolio
+1️⃣ Create folder
+portfolio
+2️⃣ Save file
+index.html
+3️⃣ Push to GitHub
+git init
+git add .
+git commit -m "portfolio"
+git branch -M main
+git remote add origin YOUR_REPO_URL
+git push -u origin main
+4️⃣ Enable GitHub Pages
+Repository → Settings → Pages
+
+Select:
+
+Branch: main
+Folder: /root
+Your site will be live.
+
+Want Something Much More Impressive?
+I can also build a next-level portfolio with:
+
+3D animations
+
+animated data visualizations
+
+project filtering
+
+GitHub API project loader
+
+animated skill graphs
+
+dark/light theme toggle
+
+scroll storytelling
+
+Basically the kind of portfolio top data analysts use to get hired.
+
+If you want, I can build you a crazy good animated portfolio (10x better than this).
+
+
+Sources
+
+cahnge the colour palate "https://www.awwwards.com/sites/modern-home-of-students-gdansk#elements" use there colour palte and font 
+
+You want your portfolio to match the design style of the “Modern Home of Students Gdańsk” Awwwards website. Sites like this typically use bold contrast colors, minimal typography, and vibrant accents to guide attention to key UI elements. 
+
+That site’s visual style roughly follows this palette:
+
+Color Palette (from that design style)
+Purpose	Color
+Background	#0B0B0B (deep black)
+Primary accent	#FF4D4D (bold red)
+Secondary accent	#F5F5F5 (light white)
+Highlight / hover	#FFD166 (warm yellow)
+Card background	#161616
+Font Style Used in Similar Awwwards Sites
+Use a clean geometric sans-serif:
+
+Primary font: Neue Montreal or Inter
+
+Free alternative: Inter (Google Fonts)
+
+Replace Colors & Font in Your Portfolio
+Update the CSS section like this.
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
+
+:root{
+
+--bg: #0B0B0B;
+--card: #161616;
+
+--primary: #FF4D4D;
+--secondary: #F5F5F5;
+--accent: #FFD166;
+
+}
+
+body{
+background:var(--bg);
+color:var(--secondary);
+font-family:'Inter',sans-serif;
+}
+
+nav{
+background:rgba(11,11,11,0.85);
+backdrop-filter:blur(10px);
+}
+
+.hero span{
+color:var(--primary);
+}
+
+.btn{
+background:var(--primary);
+color:white;
+}
+
+.btn:hover{
+background:var(--accent);
+color:black;
+}
+
+.skill-card{
+background:var(--card);
+border:1px solid rgba(255,255,255,0.05);
+}
+
+.skill-card:hover{
+transform:translateY(-8px);
+border-color:var(--primary);
+}
+
+.project-card{
+background:var(--card);
+}
+
+.project-card:hover{
+border:1px solid var(--accent);
+}
+
+.highlight{
+color:var(--primary);
+}
+Small Design Improvements (to match Awwwards style)
+Add these touches:
+
+1️⃣ Large hero typography
+.hero h1{
+font-size:4.5rem;
+letter-spacing:-2px;
+font-weight:600;
+}
+2️⃣ Smooth hover for links
+nav a{
+position:relative;
+}
+
+nav a::after{
+content:'';
+position:absolute;
+width:0%;
+height:2px;
+background:var(--primary);
+left:0;
+bottom:-4px;
+transition:0.3s;
+}
+
+nav a:hover::after{
+width:100%;
+}
+3️⃣ Animated gradient section divider
+section{
+border-top:1px solid rgba(255,255,255,0.05);
+}
+Result
+Your portfolio will now feel:
+
+• Dark premium UI
+• Awwwards-style contrast
+• Bold red highlights
+• clean typography
+• minimal but powerful design
+
+If you want, I can also upgrade this portfolio to something much closer to Awwwards-level, like:
+
+smooth Lenis scroll
+
+3D hover cards
+
+cursor follower animation
+
+scroll storytelling
+
+animated skill charts
+
+project modal previews
+
+That would make your portfolio look 10× more professional than typical student portfolios.
+
+
+give me complete code 
+
+Below is a complete single-file portfolio with:
+
+Dark Awwwards-style palette
+
+Inter font
+
+Smooth animations (GSAP + ScrollReveal)
+
+Hover effects
+
+Animated nav underline
+
+Highlighted skills and projects
+
+You can save this as index.html and deploy directly on GitHub Pages.
+
+Complete Animated Portfolio Code
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Garvita Goswami | Data Analyst</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 <script src="https://unpkg.com/scrollreveal"></script>
 
 <style>
 
+:root{
+--bg:#0B0B0B;
+--card:#161616;
+--primary:#FF4D4D;
+--secondary:#F5F5F5;
+--accent:#FFD166;
+}
+
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:'Poppins',sans-serif;
+font-family:'Inter',sans-serif;
+scroll-behavior:smooth;
 }
 
 body{
-background:#0f172a;
-color:white;
-overflow-x:hidden;
+background:var(--bg);
+color:var(--secondary);
 }
 
 section{
-padding:100px 10%;
+padding:120px 10%;
+border-top:1px solid rgba(255,255,255,0.05);
 }
 
 h1{
-font-size:3rem;
+font-size:4.5rem;
+letter-spacing:-2px;
 }
 
 h2{
 font-size:2rem;
-margin-bottom:20px;
+margin-bottom:30px;
 }
 
 p{
-color:#cbd5f5;
-line-height:1.6;
+color:#bbbbbb;
+line-height:1.7;
 }
 
 nav{
 position:fixed;
+top:0;
 width:100%;
 display:flex;
 justify-content:space-between;
 align-items:center;
 padding:20px 10%;
-background:rgba(0,0,0,0.4);
+background:rgba(11,11,11,0.9);
 backdrop-filter:blur(10px);
 z-index:1000;
+}
+
+nav h3{
+font-weight:700;
+color:white;
 }
 
 nav a{
 color:white;
 text-decoration:none;
-margin-left:20px;
+margin-left:25px;
+font-size:15px;
+position:relative;
+}
+
+nav a::after{
+content:'';
+position:absolute;
+width:0%;
+height:2px;
+background:var(--primary);
+left:0;
+bottom:-4px;
+transition:0.3s;
+}
+
+nav a:hover::after{
+width:100%;
 }
 
 .hero{
@@ -71,46 +343,53 @@ justify-content:center;
 }
 
 .hero span{
-color:#38bdf8;
+color:var(--primary);
 }
 
 .btn{
-margin-top:20px;
-padding:12px 30px;
-background:#38bdf8;
+margin-top:30px;
+padding:14px 32px;
+background:var(--primary);
 border:none;
 border-radius:30px;
-cursor:pointer;
 font-weight:600;
+cursor:pointer;
+transition:0.3s;
+}
+
+.btn:hover{
+background:var(--accent);
+color:black;
 }
 
 .skills{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-gap:20px;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:25px;
 }
 
 .skill-card{
-background:rgba(255,255,255,0.05);
-padding:20px;
-border-radius:10px;
-transition:0.4s;
+background:var(--card);
+padding:30px;
+border-radius:12px;
+transition:0.35s;
+border:1px solid transparent;
 }
 
 .skill-card:hover{
-transform:translateY(-10px) scale(1.03);
-background:#1e293b;
+transform:translateY(-10px);
+border:1px solid var(--primary);
 }
 
 .projects{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-gap:25px;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:30px;
 }
 
 .project-card{
-background:rgba(255,255,255,0.05);
-padding:25px;
+background:var(--card);
+padding:30px;
 border-radius:12px;
 transition:0.4s;
 position:relative;
@@ -119,6 +398,7 @@ overflow:hidden;
 
 .project-card:hover{
 transform:translateY(-10px);
+border:1px solid var(--accent);
 }
 
 .project-card::before{
@@ -128,8 +408,8 @@ top:0;
 left:-100%;
 width:100%;
 height:100%;
-background:linear-gradient(120deg,transparent,rgba(255,255,255,0.3),transparent);
-transition:0.5s;
+background:linear-gradient(120deg,transparent,rgba(255,255,255,0.2),transparent);
+transition:0.6s;
 }
 
 .project-card:hover::before{
@@ -137,23 +417,29 @@ left:100%;
 }
 
 .highlight{
-color:#38bdf8;
+color:var(--primary);
 font-weight:600;
 }
 
 footer{
 text-align:center;
-padding:40px;
-color:#94a3b8;
+padding:50px;
+color:#888;
+}
+
+.contact p{
+margin-top:10px;
 }
 
 </style>
+
 </head>
 
 <body>
 
 <nav>
 <h3>Garvita</h3>
+
 <div>
 <a href="#about">About</a>
 <a href="#skills">Skills</a>
@@ -162,6 +448,7 @@ color:#94a3b8;
 </div>
 </nav>
 
+
 <section class="hero">
 
 <h1>
@@ -169,25 +456,31 @@ Hi, I'm <span>Garvita Goswami</span>
 </h1>
 
 <p>
-Data Analyst specializing in Python, SQL, and Machine Learning.
-Turning raw data into meaningful business insights.
+Data Analyst specializing in Python, SQL and Machine Learning.
+I transform raw datasets into <span class="highlight">clear business insights</span>.
 </p>
 
-<button class="btn">View Projects</button>
+<button class="btn" onclick="location.href='#projects'">
+View My Work
+</button>
 
 </section>
+
 
 <section id="about">
 
 <h2>About Me</h2>
 
 <p>
-Computer Science student with strong interest in <span class="highlight">Data Analytics,
-Machine Learning, and Data Visualization</span>.
-Experienced in Python, SQL, and Power BI for solving real-world problems.
+I am a Computer Science student passionate about data analytics,
+machine learning and visualization.
+
+My work focuses on using <span class="highlight">Python, SQL and statistical analysis</span>
+to discover meaningful patterns and build data-driven solutions.
 </p>
 
 </section>
+
 
 <section id="skills">
 
@@ -202,7 +495,7 @@ Experienced in Python, SQL, and Power BI for solving real-world problems.
 
 <div class="skill-card">
 <h3>Data Analysis</h3>
-<p>Pandas, NumPy, EDA, Data Cleaning</p>
+<p>Pandas, NumPy, Data Cleaning, EDA</p>
 </div>
 
 <div class="skill-card">
@@ -212,12 +505,13 @@ Experienced in Python, SQL, and Power BI for solving real-world problems.
 
 <div class="skill-card">
 <h3>Tools</h3>
-<p>MySQL, VS Code, Jupyter</p>
+<p>MySQL, Jupyter Notebook, VS Code</p>
 </div>
 
 </div>
 
 </section>
+
 
 <section id="projects">
 
@@ -230,8 +524,8 @@ Experienced in Python, SQL, and Power BI for solving real-world problems.
 <h3>Digital Library Management System</h3>
 
 <p>
-SQL based system with <span class="highlight">automated fine calculation,
-OTP login, triggers and procedures</span>.
+Built a SQL system using <span class="highlight">PL/SQL triggers and procedures</span>
+to automate book issuance, fine calculation and OTP login.
 </p>
 
 </div>
@@ -241,8 +535,8 @@ OTP login, triggers and procedures</span>.
 <h3>Spotify Data Analysis</h3>
 
 <p>
-Analyzed most streamed songs using <span class="highlight">Python, NLP,
-data visualization</span> to identify music trends.
+Used <span class="highlight">Python, NLP and visualization</span>
+to analyze Spotify's most streamed songs and identify music trends.
 </p>
 
 </div>
@@ -252,8 +546,8 @@ data visualization</span> to identify music trends.
 <h3>Employee Mental Health Analysis</h3>
 
 <p>
-Applied <span class="highlight">EDA, statistical tests and ML models</span>
-to analyze workplace mental health patterns.
+Performed <span class="highlight">EDA, statistical testing and ML modeling</span>
+to understand workplace mental health patterns.
 </p>
 
 </div>
@@ -262,15 +556,17 @@ to analyze workplace mental health patterns.
 
 </section>
 
-<section id="contact">
+
+<section id="contact" class="contact">
 
 <h2>Contact</h2>
 
 <p>Email: garvitagoswami.05@gmail.com</p>
-<p>LinkedIn: garvita-goswami</p>
 <p>GitHub: Garvita260605</p>
+<p>LinkedIn: garvita-goswami</p>
 
 </section>
+
 
 <footer>
 
@@ -278,32 +574,40 @@ to analyze workplace mental health patterns.
 
 </footer>
 
+
 <script>
 
 gsap.from(".hero h1",{
 opacity:0,
-y:-50,
+y:-60,
 duration:1
 })
 
 gsap.from(".hero p",{
 opacity:0,
-y:30,
+y:40,
 duration:1,
-delay:0.5
+delay:0.4
+})
+
+gsap.from(".btn",{
+opacity:0,
+scale:0.8,
+duration:0.8,
+delay:0.8
 })
 
 ScrollReveal().reveal('.skill-card',{
-delay:200,
-distance:'40px',
+distance:'60px',
 origin:'bottom',
+duration:800,
 interval:200
 })
 
 ScrollReveal().reveal('.project-card',{
-delay:200,
-distance:'50px',
+distance:'60px',
 origin:'bottom',
+duration:800,
 interval:200
 })
 
@@ -311,3 +615,37 @@ interval:200
 
 </body>
 </html>
+How to Use It
+Create a folder
+
+Save file as
+
+index.html
+Upload to GitHub repo
+
+Enable GitHub Pages
+
+Your portfolio will be live.
+
+If you want something much more impressive
+I can also upgrade this into a next-level portfolio with:
+
+3D hover cards
+
+animated cursor
+
+magnetic buttons
+
+smooth Lenis scrolling
+
+project popup previews
+
+animated skill graphs
+
+gradient motion backgrounds
+
+Basically the type of portfolio that wins Awwwards and impresses recruiters.
+
+
+
+
