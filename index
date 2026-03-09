@@ -1,0 +1,405 @@
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { 
+  Database, 
+  Code2, 
+  LineChart, 
+  Github, 
+  Linkedin, 
+  Mail, 
+  Music, 
+  Trophy, 
+  Award,
+  ChevronRight,
+  Sparkles,
+  Brain,
+  ArrowUpRight,
+  MapPin,
+  Calendar,
+  Layers,
+  Phone,
+  Terminal,
+  Library,
+  Workflow,
+  Download,
+  Lightbulb,
+  CheckCircle2,
+  X,
+  Zap
+} from 'lucide-react';
+
+// --- Custom Spotify Icon ---
+const SpotifyIcon = ({ className }) => (
+  <svg viewBox="0 0 24 24" className={className} fill="currentColor">
+    <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.496 17.302c-.217.356-.677.47-1.033.253-2.858-1.747-6.456-2.14-10.693-1.171-.407.093-.815-.16-.908-.567-.093-.407.16-.815.567-.908 4.636-1.06 8.598-.611 11.78 1.337.356.217.47.677.287 1.056zm1.467-3.258c-.274.445-.853.585-1.297.311-3.272-2.012-8.259-2.593-12.128-1.417-.5.152-1.026-.134-1.178-.634-.152-.5.134-1.026.634-1.178 4.418-1.341 9.907-.694 13.659 1.611.444.274.584.853.31 1.307zm.129-3.385c-3.92-2.328-10.379-2.543-14.131-1.404-.602.183-1.234-.167-1.417-.769-.183-.602.167-1.234.769-1.417 4.314-1.31 11.442-1.056 15.968 1.631.541.321.718 1.022.397 1.563-.321.541-1.022.718-1.586.396z"/>
+  </svg>
+);
+
+// --- Animation Variants ---
+const fadeInUp = {
+  initial: { opacity: 0, y: 40 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
+};
+
+const staggerContainer = {
+  animate: {
+    transition: {
+      staggerChildren: 0.1
+    }
+  }
+};
+
+const App = () => {
+  const [scrolled, setScrolled] = useState(false);
+  const [selectedProject, setSelectedProject] = useState(null);
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const projects = [
+    {
+      id: 1,
+      title: "Spotify Streaming Analysis",
+      tag: "Data Storytelling",
+      shortDesc: "Decoding the auditory patterns of 2024 global hits using NLP.",
+      fullDesc: "This project analyzed the relationship between lyrical explicitness and audience retention. Using VADER sentiment analysis, I processed thousands of lyrics to find patterns in song popularity.",
+      outcome: "Discovered that explicit lyrics correlate with 15% longer chart longevity in Gen-Z demographics.",
+      tech: ["Python", "NLTK", "Seaborn", "VADER"],
+      icon: <SpotifyIcon className="w-8 h-8 text-[#1DB954]" />,
+      accent: "border-[#1DB954]/20 hover:border-[#1DB954]/60",
+      insight: "Engagement vs. Sentiment"
+    },
+    {
+      id: 2,
+      title: "Workplace Wellness",
+      tag: "Statistical Research",
+      shortDesc: "Analyzing the human cost of modern workplace structures.",
+      fullDesc: "An EDA project focusing on mental health survey data. I preprocessed categorical features and normalized variables to perform high-confidence statistical tests.",
+      outcome: "Identified 'Asynchronous Communication' as the #1 mitigator of workplace anxiety across remote teams.",
+      tech: ["SciPy", "ANOVA", "Matplotlib", "Pandas"],
+      icon: <Brain className="w-8 h-8 text-purple-500" />,
+      accent: "border-purple-500/20 hover:border-purple-500/60",
+      insight: "The Remote Work Paradox"
+    },
+    {
+      id: 3,
+      title: "Library SQL Engine",
+      tag: "Database Architecture",
+      shortDesc: "High-performance database logic for university systems.",
+      fullDesc: "Designed an ER model and implemented full PL/SQL logic for library automation. Focused on secure OTP logins and real-time fine triggers.",
+      outcome: "Reduced manual fine-processing time by 85% through automated SQL triggers and procedure logic.",
+      tech: ["Oracle SQL", "PL/SQL", "Triggers", "ER Models"],
+      icon: <Database className="w-8 h-8 text-blue-600" />,
+      accent: "border-blue-600/20 hover:border-blue-600/60",
+      insight: "Automation over Manual Labor"
+    }
+  ];
+
+  return (
+    <div className="min-h-screen bg-[#FDFDFD] text-[#1a1a1a] font-sans selection:bg-blue-600 selection:text-white overflow-x-hidden">
+      
+      {/* Navigation */}
+      <motion.nav 
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        className={`fixed top-0 w-full z-50 transition-all duration-500 ${scrolled ? 'py-4 bg-white/70 backdrop-blur-xl border-b border-gray-100' : 'py-8 bg-transparent'}`}
+      >
+        <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+          <div className="flex items-center gap-3 group cursor-pointer">
+            <motion.div 
+              whileHover={{ rotate: 180 }}
+              className="w-10 h-10 bg-black rounded-xl flex items-center justify-center text-white font-bold text-sm transition-colors group-hover:bg-blue-600"
+            >
+              GG
+            </motion.div>
+            <span className="font-bold tracking-tight text-xl">Garvita Goswami</span>
+          </div>
+          <div className="hidden md:flex items-center gap-10 text-[10px] font-black uppercase tracking-[0.2em] text-gray-400">
+            <a href="#work" className="hover:text-black transition-colors">Portfolio</a>
+            <a href="#about" className="hover:text-black transition-colors">About</a>
+            <motion.a 
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              href="mailto:garvitagoswami.05@gmail.com" 
+              className="bg-black text-white px-8 py-3 rounded-full shadow-lg"
+            >
+              Hire Me
+            </motion.a>
+          </div>
+        </div>
+      </motion.nav>
+
+      <main className="max-w-7xl mx-auto px-6 pt-40 pb-20">
+        
+        {/* --- HERO --- */}
+        <motion.div initial="initial" animate="animate" variants={staggerContainer} className="grid grid-cols-1 lg:grid-cols-12 gap-5 mb-5">
+          <motion.div variants={fadeInUp} className="lg:col-span-8 bg-white border border-gray-100 rounded-[3.5rem] p-10 md:p-16 flex flex-col justify-between shadow-sm relative group overflow-hidden">
+            <div className="relative z-10">
+              <motion.div 
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50 text-blue-600 text-[10px] font-bold uppercase tracking-[0.2em] mb-12"
+              >
+                <Zap size={14} className="animate-pulse" /> Engineering Stories from Data
+              </motion.div>
+              <h1 className="text-6xl md:text-8xl font-bold tracking-tighter leading-[0.9] mb-12">
+                Logic Meets <br />
+                <span className="text-blue-600">Narrative.</span>
+              </h1>
+              <p className="text-xl text-gray-400 max-w-lg font-medium leading-relaxed">
+                Computer Science student at LPU. I specialize in turning complex raw data into robust architectures and impactful insights.
+              </p>
+            </div>
+            
+            <div className="flex flex-wrap gap-12 mt-16 pt-10 border-t border-gray-50 z-10">
+               <div>
+                  <p className="text-[10px] font-black uppercase tracking-widest text-gray-300 mb-1">GitHub</p>
+                  <a href="https://github.com/Garvita260605" target="_blank" className="font-bold flex items-center gap-1 group/link">
+                    @Garvita260605 <ArrowUpRight className="group-hover/link:translate-x-1 transition-transform" size={14}/>
+                  </a>
+               </div>
+               <div>
+                  <p className="text-[10px] font-black uppercase tracking-widest text-gray-300 mb-1">Specialization</p>
+                  <span className="font-bold">Database Engineering & ML</span>
+               </div>
+            </div>
+            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-50/20 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 group-hover:bg-blue-100/40 transition-colors duration-1000"></div>
+          </motion.div>
+
+          <motion.div variants={fadeInUp} className="lg:col-span-4 bg-gray-50 border border-gray-100 rounded-[3.5rem] overflow-hidden relative group cursor-pointer">
+            <img 
+              src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=800" 
+              alt="Garvita"
+              className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000 scale-105 group-hover:scale-100"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent p-10 flex flex-col justify-end text-white">
+               <h3 className="text-2xl font-bold">Garvita G.</h3>
+               <p className="text-white/60 text-sm">Uttarakhand, India</p>
+            </div>
+          </motion.div>
+        </motion.div>
+
+        {/* --- STACKS POP OUT --- */}
+        <section className="mb-5">
+           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+              {[
+                { title: "Engineering", icon: <Terminal className="text-blue-600"/>, items: ["Python", "SQL", "PL/SQL"], insight: "Optimizing backend logic and triggers." },
+                { title: "Analytics", icon: <Library className="text-emerald-600"/>, items: ["NumPy", "Pandas", "Scikit"], insight: "Extracting truth from structured noise." },
+                { title: "Impact", icon: <LineChart className="text-purple-600"/>, items: ["Power BI", "Excel", "NLTK"], insight: "Visualizing behavioral datasets." }
+              ].map((stack, i) => (
+                <motion.div 
+                  key={i}
+                  whileHover={{ y: -15, scale: 1.02 }}
+                  className="bg-white border border-gray-100 rounded-[2.5rem] p-10 hover:shadow-2xl hover:shadow-blue-500/5 transition-all group"
+                >
+                   <div className="w-14 h-14 bg-gray-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-black group-hover:text-white transition-colors">
+                      {stack.icon}
+                   </div>
+                   <h4 className="font-bold text-xl mb-4">{stack.title}</h4>
+                   <div className="flex flex-wrap gap-2 mb-8">
+                      {stack.items.map(s => (
+                        <span key={s} className="px-3 py-1 bg-gray-100 rounded-lg text-[10px] font-black text-gray-500 uppercase">{s}</span>
+                      ))}
+                   </div>
+                   <div className="pt-6 border-t border-gray-50">
+                      <p className="text-xs text-gray-400 italic leading-relaxed flex gap-2">
+                        <Lightbulb size={14} className="text-yellow-500 shrink-0"/> {stack.insight}
+                      </p>
+                   </div>
+                </motion.div>
+              ))}
+           </div>
+        </section>
+
+        {/* --- PROJECTS SECTION --- */}
+        <section id="work" className="mb-20 pt-12">
+          <div className="flex items-center gap-6 mb-12">
+            <h2 className="text-xs font-bold uppercase tracking-[0.4em] text-gray-300">Project Narratives</h2>
+            <div className="h-px w-full bg-gray-100"></div>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            {projects.map((p) => (
+              <motion.div 
+                key={p.id} 
+                layoutId={`card-${p.id}`}
+                onClick={() => setSelectedProject(p)}
+                whileHover={{ y: -10 }} 
+                className={`group cursor-pointer bg-white border ${p.accent} rounded-[3rem] p-10 transition-all shadow-sm hover:shadow-2xl`}
+              >
+                <div className="mb-16 flex justify-between items-start">
+                   <div className="p-4 bg-gray-50 rounded-2xl group-hover:scale-110 transition-all duration-500 shadow-sm">
+                      {p.icon}
+                   </div>
+                   <div className="bg-blue-50 text-blue-600 px-3 py-1 rounded-full text-[8px] font-black uppercase tracking-widest group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                      {p.insight}
+                   </div>
+                </div>
+                <h3 className="text-2xl font-bold mb-4">{p.title}</h3>
+                <p className="text-gray-400 text-sm mb-12 leading-relaxed">{p.shortDesc}</p>
+                
+                {/* Visual "Main Outcome" Highlight */}
+                <div className="p-5 bg-gray-50 rounded-2xl border border-gray-100 flex items-start gap-3 group-hover:bg-blue-50/50 transition-colors">
+                   <div className="text-blue-600 shrink-0 mt-0.5"><CheckCircle2 size={16}/></div>
+                   <div>
+                      <p className="text-[10px] font-black uppercase tracking-widest text-blue-600 mb-1">Impact</p>
+                      <p className="text-xs font-bold text-gray-700 leading-snug">{p.outcome.substring(0, 50)}...</p>
+                   </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </section>
+
+        {/* --- PROJECT POPUP (MODAL) --- */}
+        <AnimatePresence>
+          {selectedProject && (
+            <>
+              <motion.div 
+                initial={{ opacity: 0 }} 
+                animate={{ opacity: 1 }} 
+                exit={{ opacity: 0 }}
+                onClick={() => setSelectedProject(null)}
+                className="fixed inset-0 bg-black/60 backdrop-blur-md z-[60]"
+              />
+              <motion.div 
+                layoutId={`card-${selectedProject.id}`}
+                className="fixed inset-4 md:inset-x-[20%] md:inset-y-[15%] bg-white rounded-[3.5rem] z-[70] overflow-hidden shadow-2xl flex flex-col md:flex-row"
+              >
+                <div className="w-full md:w-[40%] bg-gray-50 p-12 flex flex-col justify-between">
+                   <div className="p-8 bg-white rounded-[2rem] shadow-sm w-fit mx-auto md:mx-0">
+                      {selectedProject.icon}
+                   </div>
+                   <div>
+                      <h4 className="text-[10px] font-black uppercase tracking-[0.4em] text-gray-300 mb-2">Technical Core</h4>
+                      <div className="flex flex-wrap gap-2">
+                        {selectedProject.tech.map(t => (
+                          <span key={t} className="px-4 py-2 bg-black text-white rounded-xl text-xs font-bold">{t}</span>
+                        ))}
+                      </div>
+                   </div>
+                </div>
+
+                <div className="w-full md:w-[60%] p-12 md:p-16 flex flex-col justify-between overflow-y-auto">
+                   <button 
+                    onClick={() => setSelectedProject(null)}
+                    className="absolute top-8 right-8 p-3 bg-gray-100 rounded-full hover:bg-black hover:text-white transition-all"
+                   >
+                    <X size={20}/>
+                   </button>
+                   
+                   <div>
+                      <span className="text-[10px] font-black uppercase tracking-[0.3em] text-blue-600 mb-4 block">{selectedProject.tag}</span>
+                      <h2 className="text-4xl md:text-5xl font-bold mb-8 tracking-tight">{selectedProject.title}</h2>
+                      <p className="text-lg text-gray-500 leading-relaxed mb-12">
+                        {selectedProject.fullDesc}
+                      </p>
+                      
+                      <div className="p-10 bg-blue-600 rounded-[2.5rem] text-white shadow-xl shadow-blue-500/20">
+                         <div className="flex items-center gap-3 mb-6">
+                            <Trophy size={24} className="text-white/50" />
+                            <span className="text-xs font-black uppercase tracking-widest opacity-60">Primary Outcome</span>
+                         </div>
+                         <p className="text-2xl font-bold leading-tight">
+                           {selectedProject.outcome}
+                         </p>
+                      </div>
+                   </div>
+
+                   <div className="flex justify-between items-center mt-12 pt-12 border-t border-gray-100">
+                      <a href="https://github.com/Garvita260605" className="flex items-center gap-2 font-bold hover:text-blue-600 transition-colors">
+                        View Source <Github size={18}/>
+                      </a>
+                      <button 
+                        onClick={() => setSelectedProject(null)}
+                        className="text-xs font-bold uppercase tracking-widest text-gray-300 hover:text-black transition-colors"
+                      >
+                        Close Details
+                      </button>
+                   </div>
+                </div>
+              </motion.div>
+            </>
+          )}
+        </AnimatePresence>
+
+        {/* --- ACADEMICS --- */}
+        <div id="about" className="grid grid-cols-1 md:grid-cols-12 gap-5 mt-20">
+          <motion.div whileInView={{ opacity: 1 }} initial={{ opacity: 0 }} className="md:col-span-8 bg-white border border-gray-100 rounded-[3.5rem] p-12 md:p-16">
+            <h2 className="text-3xl font-bold mb-16 flex items-center gap-4">
+              <Calendar className="text-blue-600" size={28}/> Education Path
+            </h2>
+            <div className="space-y-16 relative before:absolute before:left-[11px] before:top-2 before:bottom-2 before:w-px before:bg-gray-100">
+               <div className="relative pl-12 group">
+                  <div className="absolute left-0 top-1.5 w-6 h-6 -translate-x-1/2 rounded-full border-4 border-white bg-blue-600 shadow-sm z-10 transition-transform group-hover:scale-125"></div>
+                  <h4 className="font-bold text-2xl mb-1 group-hover:text-blue-600 transition-colors">B.Tech (Hons.) Computer Science</h4>
+                  <p className="text-gray-400 text-lg font-medium mb-4 italic">Lovely Professional University • Punjab</p>
+                  <div className="flex gap-4">
+                    <span className="px-5 py-2 bg-blue-50 text-blue-600 rounded-2xl text-[10px] font-black uppercase tracking-widest">CGPA: 7.1</span>
+                    <span className="px-5 py-2 bg-gray-50 text-gray-400 rounded-2xl text-[10px] font-black uppercase tracking-widest">2023 — Present</span>
+                  </div>
+               </div>
+               <div className="relative pl-12 group opacity-60 hover:opacity-100 transition-opacity">
+                  <div className="absolute left-0 top-1.5 w-6 h-6 -translate-x-1/2 rounded-full border-4 border-white bg-gray-200 shadow-sm z-10 transition-transform group-hover:scale-125"></div>
+                  <h4 className="font-bold text-2xl mb-1 transition-colors">Intermediate & Matriculation</h4>
+                  <p className="text-gray-400 text-lg font-medium mb-4 italic">Army Public School, Almora</p>
+                  <div className="flex gap-4">
+                    <span className="px-5 py-2 bg-gray-50 text-gray-400 rounded-2xl text-[10px] font-black uppercase tracking-widest">97% (Matric)</span>
+                    <span className="px-5 py-2 bg-gray-50 text-gray-400 rounded-2xl text-[10px] font-black uppercase tracking-widest">82% (Inter)</span>
+                  </div>
+               </div>
+            </div>
+          </motion.div>
+
+          <div className="md:col-span-4 space-y-5">
+            <div className="bg-black rounded-[3.5rem] p-12 text-white h-full flex flex-col justify-between">
+              <div>
+                <h2 className="text-2xl font-bold mb-8">Certifications</h2>
+                <div className="space-y-4">
+                  {["Networking (Coursera)", "SQL & Data Sci (LPU)", "Python for ML (Udemy)"].map((cert, i) => (
+                    <motion.div key={i} whileHover={{ x: 10 }} className="flex items-center gap-4 p-4 border border-white/10 rounded-2xl bg-white/5 cursor-default">
+                      <Award size={18} className="text-white/30"/>
+                      <span className="text-sm font-bold opacity-80 tracking-tight">{cert}</span>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+              <div className="mt-12 pt-8 border-t border-white/10">
+                 <p className="text-[10px] font-black uppercase tracking-[0.3em] text-white/40 mb-4 text-center">Backstage</p>
+                 <div className="flex justify-center gap-6 opacity-60">
+                    <div className="text-center"><Music size={20} className="mx-auto mb-1"/><span className="text-[8px] font-bold uppercase tracking-widest">Singing</span></div>
+                    <div className="text-center"><Trophy size={20} className="mx-auto mb-1"/><span className="text-[8px] font-bold uppercase tracking-widest">Hackathons</span></div>
+                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <footer className="py-24 bg-white border-t border-gray-100 mt-20">
+        <div className="max-w-7xl mx-auto px-6 text-center">
+          <motion.div initial={{ scale: 0.9 }} whileInView={{ scale: 1 }} className="mb-20">
+            <h2 className="text-6xl md:text-8xl font-bold mb-12 tracking-tighter">Ready to <br/> <span className="text-blue-600 italic">collaborate?</span></h2>
+            <div className="flex justify-center gap-12">
+              <a href="https://linkedin.com/in/garvita-goswami-348" target="_blank" className="p-5 bg-gray-50 rounded-[2rem] hover:bg-blue-600 hover:text-white transition-all hover:-rotate-6"><Linkedin size={28}/></a>
+              <a href="https://github.com/Garvita260605" target="_blank" className="p-5 bg-gray-50 rounded-[2rem] hover:bg-black hover:text-white transition-all hover:rotate-6"><Github size={28}/></a>
+              <a href="mailto:garvitagoswami.05@gmail.com" className="p-5 bg-gray-50 rounded-[2rem] hover:bg-emerald-500 hover:text-white transition-all"><Mail size={28}/></a>
+            </div>
+          </motion.div>
+          <div className="flex flex-col md:flex-row justify-between items-center gap-6 pt-12 border-t border-gray-50">
+             <p className="text-gray-300 text-[10px] font-black uppercase tracking-[0.6em]">Garvita Goswami • Studio Portfolio 2025</p>
+             <div className="flex items-center gap-2 text-gray-300 text-[10px] font-black uppercase">
+                <MapPin size={12}/> Punjab / Uttarakhand, IN
+             </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+};
+
+export default App;
