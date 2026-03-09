@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Garvita Goswami | Data Analyst</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://unpkg.com/scrollreveal"></script>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#0f172a;
+color:white;
+overflow-x:hidden;
+}
+
+section{
+padding:100px 10%;
+}
+
+h1{
+font-size:3rem;
+}
+
+h2{
+font-size:2rem;
+margin-bottom:20px;
+}
+
+p{
+color:#cbd5f5;
+line-height:1.6;
+}
+
+nav{
+position:fixed;
+width:100%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 10%;
+background:rgba(0,0,0,0.4);
+backdrop-filter:blur(10px);
+z-index:1000;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+margin-left:20px;
+}
+
+.hero{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+}
+
+.hero span{
+color:#38bdf8;
+}
+
+.btn{
+margin-top:20px;
+padding:12px 30px;
+background:#38bdf8;
+border:none;
+border-radius:30px;
+cursor:pointer;
+font-weight:600;
+}
+
+.skills{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:20px;
+}
+
+.skill-card{
+background:rgba(255,255,255,0.05);
+padding:20px;
+border-radius:10px;
+transition:0.4s;
+}
+
+.skill-card:hover{
+transform:translateY(-10px) scale(1.03);
+background:#1e293b;
+}
+
+.projects{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:25px;
+}
+
+.project-card{
+background:rgba(255,255,255,0.05);
+padding:25px;
+border-radius:12px;
+transition:0.4s;
+position:relative;
+overflow:hidden;
+}
+
+.project-card:hover{
+transform:translateY(-10px);
+}
+
+.project-card::before{
+content:'';
+position:absolute;
+top:0;
+left:-100%;
+width:100%;
+height:100%;
+background:linear-gradient(120deg,transparent,rgba(255,255,255,0.3),transparent);
+transition:0.5s;
+}
+
+.project-card:hover::before{
+left:100%;
+}
+
+.highlight{
+color:#38bdf8;
+font-weight:600;
+}
+
+footer{
+text-align:center;
+padding:40px;
+color:#94a3b8;
+}
+
+</style>
+</head>
+
+<body>
+
+<nav>
+<h3>Garvita</h3>
+<div>
+<a href="#about">About</a>
+<a href="#skills">Skills</a>
+<a href="#projects">Projects</a>
+<a href="#contact">Contact</a>
+</div>
+</nav>
+
+<section class="hero">
+
+<h1>
+Hi, I'm <span>Garvita Goswami</span>
+</h1>
+
+<p>
+Data Analyst specializing in Python, SQL, and Machine Learning.
+Turning raw data into meaningful business insights.
+</p>
+
+<button class="btn">View Projects</button>
+
+</section>
+
+<section id="about">
+
+<h2>About Me</h2>
+
+<p>
+Computer Science student with strong interest in <span class="highlight">Data Analytics,
+Machine Learning, and Data Visualization</span>.
+Experienced in Python, SQL, and Power BI for solving real-world problems.
+</p>
+
+</section>
+
+<section id="skills">
+
+<h2>Skills</h2>
+
+<div class="skills">
+
+<div class="skill-card">
+<h3>Programming</h3>
+<p>Python, SQL, C, PL/SQL</p>
+</div>
+
+<div class="skill-card">
+<h3>Data Analysis</h3>
+<p>Pandas, NumPy, EDA, Data Cleaning</p>
+</div>
+
+<div class="skill-card">
+<h3>Visualization</h3>
+<p>Matplotlib, Seaborn, Power BI</p>
+</div>
+
+<div class="skill-card">
+<h3>Tools</h3>
+<p>MySQL, VS Code, Jupyter</p>
+</div>
+
+</div>
+
+</section>
+
+<section id="projects">
+
+<h2>Highlighted Projects</h2>
+
+<div class="projects">
+
+<div class="project-card">
+
+<h3>Digital Library Management System</h3>
+
+<p>
+SQL based system with <span class="highlight">automated fine calculation,
+OTP login, triggers and procedures</span>.
+</p>
+
+</div>
+
+<div class="project-card">
+
+<h3>Spotify Data Analysis</h3>
+
+<p>
+Analyzed most streamed songs using <span class="highlight">Python, NLP,
+data visualization</span> to identify music trends.
+</p>
+
+</div>
+
+<div class="project-card">
+
+<h3>Employee Mental Health Analysis</h3>
+
+<p>
+Applied <span class="highlight">EDA, statistical tests and ML models</span>
+to analyze workplace mental health patterns.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="contact">
+
+<h2>Contact</h2>
+
+<p>Email: garvitagoswami.05@gmail.com</p>
+<p>LinkedIn: garvita-goswami</p>
+<p>GitHub: Garvita260605</p>
+
+</section>
+
+<footer>
+
+<p>© 2026 Garvita Goswami</p>
+
+</footer>
+
+<script>
+
+gsap.from(".hero h1",{
+opacity:0,
+y:-50,
+duration:1
+})
+
+gsap.from(".hero p",{
+opacity:0,
+y:30,
+duration:1,
+delay:0.5
+})
+
+ScrollReveal().reveal('.skill-card',{
+delay:200,
+distance:'40px',
+origin:'bottom',
+interval:200
+})
+
+ScrollReveal().reveal('.project-card',{
+delay:200,
+distance:'50px',
+origin:'bottom',
+interval:200
+})
+
+</script>
+
+</body>
+</html>
